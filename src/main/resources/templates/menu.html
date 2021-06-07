@@ -8,8 +8,47 @@
 <body>
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
+    <div>
+    <h2>My profile</h2>
+    <p th:text="${'Name: ' + name}">The name of the client</p>
+    <p th:text="${'Skin type: ' + skintype}">The type of skin the client has</p>
+    <p th:text="${'Treatment type: ' + manipedi}">Manicure or pedicure</p>
+    </div>
 </div>
 <div id = "servicesMenu">
+    <h2>Menu of Available Services</h2>
+    <div>
+        <h3>Facial Treatments</h3>
+            <p> The facial treatments below are recommended by our estheticians for you given skin type.</p>
+        <table class="table table-striped">
+        <th:block th:each="service : ${appropriateFacials}">
+            <tr >
+                <td th:text="${service}">
+                </td>
+            </tr>
+        </th:block>
+    </table>
+    </div>
+    <div th:if = "${manipedi.equals('manicure') || manipedi.equals('manipedi')}">
+        <h3>Manicure</h3>
+        <p th:replace="fragments :: manicureDescription"></p>
+    </div>
+    <div th:if = "${manipedi.equals('pedicure') || manipedi.equals('manipedi')}">
+        <h3>Pedicure</h3>
+        <p th:replace="fragments :: pedicureDescription"></p>
+    </div>
+
 </div>
 </body>
+<footer>
+
+        <h2 class="foothead">Polish Colors Available</h2>
+
+
+    <div class="row">
+        <div class="polish1 column"></div>
+        <div class="polish2 column"></div>
+        <div class="polish3 column"></div>
+    </div>
+</footer>
 </html>
