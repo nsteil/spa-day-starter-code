@@ -21,7 +21,7 @@ public class UserController {
 
     @PostMapping
     public String processAddUserForm(Model model, @ModelAttribute @Valid User user,
-                                     Errors errors, @NotBlank String verify) {
+                                     Errors errors,@NotBlank(message = "Verification required") String verify) {
         model.addAttribute("user",user);
         model.addAttribute("verify", verify);
 
